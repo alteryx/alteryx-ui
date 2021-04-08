@@ -1,2 +1,4 @@
-node_modules/
-build/
+packages/eclipse-components/node_modules/
+packages/eclipse-components/build/
+packages/eclipse-icons/node_modules/
+packages/eclipse-icons/build/
