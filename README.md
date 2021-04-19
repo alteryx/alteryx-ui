@@ -1,1 +1,1 @@
-# eclipse-ui
+# Alteryx UI

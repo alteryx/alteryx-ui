@@ -1,0 +1,6 @@
+packages/components/node_modules/
+packages/components/build/
+packages/icons/node_modules/
+packages/icons/build/
+packages/components/.npmrc
+packages/icons/.npmrc
