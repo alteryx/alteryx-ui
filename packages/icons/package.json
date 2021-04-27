@@ -1,6 +1,6 @@
 {
-  "name": "@ayx/icons",
-  "version": "4.1.3",
+  "name": "@alteryx/icons",
+  "version": "1.0.0",
   "description": "React component for Alteryx icons",
   "main": "build/index.js",
   "publishConfig": {
