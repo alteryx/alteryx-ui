@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "copy-core": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../core/src/**/* ../src Select",
+    "copy-license": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../LICENSE ../build",
     "copy-autocomplete": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../lab/src/Autocomplete/* ../src",
     "copy-virtualized-list": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../lab/src/VirtualizedList/* ../src",
     "build:es2015": "cross-env NODE_ENV=production babel --config-file ./.babelrc.js ./src --copy-files --out-dir ./build --no-copy-ignored",
@@ -21,9 +22,9 @@
     "build:copy-files-custom-components": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../src/**/*.d.ts ../build es AyxAppWrapper IntlProviderWithArrows",
     "build:copy-strings": "babel-node --config-file ./.babelrc.js ./scripts/copy-strings.js ../src/locale ../build",
     "build:copy-files-material": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../node_modules/@material-ui/core/**/*.d.ts ../build es AyxAppWrapper IntlProviderWithArrows",
-    "release": "npm run copy-core && npm run build:copy-files && npm publish build --non-interactive",
+    "release": "npm run copy license && npm run copy-core && npm run build:copy-files && npm publish build --non-interactive",
     "clean": "rimraf build",
-    "build": "npm run copy-core && npm run copy-virtualized-list && npm run copy-autocomplete && npm run build:es2015 && npm run build:es2015modules && npm run build:copy-files"
+    "build": "npm run build:es2015 && npm run build:es2015modules && npm run build:copy-files"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",

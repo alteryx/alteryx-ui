@@ -1,7 +1,7 @@
 {
   "name": "@alteryx/icons",
   "version": "1.0.0",
-  "description": "React component for Alteryx icons",
+  "description": "Alteryx React Icons",
   "main": "build/index.js",
   "publishConfig": {
     "access": "public"
@@ -11,6 +11,7 @@
     "build:es2015": "cross-env NODE_ENV=production babel --config-file ./.babelrc.js ./src --copy-files --out-dir ./build --ignore *.test.js",
     "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel --config-file ./.babelrc.js ./src/index.js --out-file ./build/index.es.js",
     "build:copy-files": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js",
+    "build:copy-license": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js",
     "release": "npm run build:copy-files && npm publish build --non-interactive",
     "clean": "rimraf build",
     "compile": "node ./bin/build",
