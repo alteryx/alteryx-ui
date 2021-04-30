@@ -1,6 +1,6 @@
 {
   "name": "@alteryx/ui",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Alteryx Component Library",
   "main": "build/index.js",
   "module": "index.es.js",
@@ -28,7 +28,9 @@
     "build": "npm run build:es2015 && npm run build:es2015modules && npm run build:copy-files"
   },
   "dependencies": {
+    "@alteryx/icons": "0.0.1",
     "@material-ui/core": "^4.11.3-deprecations.1",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/styles": "^4.0.0",
     "@material-ui/system": "^4.0.0",
     "@material-ui/types": "^5.0.0",

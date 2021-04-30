@@ -57,7 +57,7 @@ const conditionalOverride = (condition, overrides) => (condition ? overrides : u
 
 const MListItemIcon = ({ palette, spacing }) => ({
   root: {
-    minWidth: 0, // Kill the MUI minWidth so we can control spacing with easier to understand margin/padding styles.
+    minWidth: 0, // Remove the MUI minWidth so we can control spacing with easier to understand margin/padding styles.
     marginRight: spacing(2),
     // We don't want any override at all in light mode, because it would have to be a magic number.
     ...conditionalOverride(palette.type === 'dark', { color: fade(palette.text.primary, 0.54) })

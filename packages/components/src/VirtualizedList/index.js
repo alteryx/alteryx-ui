@@ -1,4 +1,4 @@
-import { dataUICMaker } from '@ayx/ui-core';
+import { dataUICMaker } from '../utils';
 
 import VirtualizedList from './VirtualizedList';
 

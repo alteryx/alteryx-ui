@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import useForkRef from '@material-ui/core/utils/useForkRef';
 import createChainedFunction from '@material-ui/core/utils/createChainedFunction';
-import { ChevronRight as KeyboardArrowRight } from '@ayx/icons';
+import { ChevronRight as KeyboardArrowRight } from '@alteryx/icons';
 
 import { withStyles, useTheme } from '../styles';
 import { dataUICMaker, filterProps } from '../utils';

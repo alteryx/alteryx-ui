@@ -6,8 +6,7 @@ export function pxToRem(value) {
   return `${(value / htmlFontSize) * coef}rem`;
 }
 
-/** ********************** DEPRICATED TYPOGRAPHY STYLE KEYS ************************ */
-// The following function should be removed with the next major release (v4.x.x).
+/** ********************** DEPRECATED TYPOGRAPHY STYLE KEYS ************************ */
 
 const getDepricatedOverrides = (palette, baseVariants) => {
   const variantSize = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, AlertCircle, Check, ChevronDown, Info, XSmall, X, Plus } from '@ayx/icons';
+import { AlertTriangle, AlertCircle, Check, ChevronDown, Info, XSmall, X, Plus } from '@alteryx/icons';
 
 import Checkbox from '../../internal/icons/Checkbox';
 import CheckboxChecked from '../../internal/icons/CheckboxChecked';

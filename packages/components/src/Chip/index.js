@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MaterialChip from '@material-ui/core/Chip';
-import { XSmall } from '@ayx/icons';
+import { XSmall } from '@alteryx/icons';
 
 import { dataUICMaker } from '../utils';
 
