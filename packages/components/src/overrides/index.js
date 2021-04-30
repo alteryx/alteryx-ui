@@ -10,6 +10,7 @@ import button from './button';
 import card from './card';
 import chip from './chip';
 import checkbox from './checkbox';
+import dateTimePicker from './dateTimePicker';
 import dialog from './dialog';
 import divider from './divider';
 import drawer from './drawer';
@@ -53,6 +54,7 @@ export default theme => ({
   ...card(theme),
   ...checkbox(theme),
   ...chip(theme),
+  ...dateTimePicker(theme),
   ...dialog(theme),
   ...divider(theme),
   ...drawer(theme),

@@ -2,12 +2,14 @@ const isObject = obj => typeof obj === 'object' && obj !== null;
 export const MIN_MULTIPLIER = 0.0;
 export const MAX_MULTIPLIER = 3.0;
 
-const applyPadding = (value, constrainedMultiplier, validatedCharacter) => {
+const starChar = '＊';
+
+const applyPadding = (value, constrainedMultiplier, validatedCharacter, useStar) => {
   const valueLength = value.length;
   const totalPadLength = Math.ceil(valueLength * constrainedMultiplier);
   const oneSidePadLength = Math.max(Math.ceil(totalPadLength / 2), 1);
-  const leftPadChar = validatedCharacter || '⇚';
-  const rightPadChar = validatedCharacter || '⇛';
+  const leftPadChar = validatedCharacter || (useStar ? starChar : '⇚');
+  const rightPadChar = validatedCharacter || (useStar ? starChar : '⇛');
 
   const leftPad = leftPadChar.repeat(oneSidePadLength);
   const rightPad = rightPadChar.repeat(oneSidePadLength);
@@ -16,18 +18,18 @@ const applyPadding = (value, constrainedMultiplier, validatedCharacter) => {
   return `${leftPad}${value}${rightPad}`;
 };
 
-const traverseMessagesObj = (msgObj, constrainedMultiplier, validatedCharacter) => {
+const traverseMessagesObj = (msgObj, constrainedMultiplier, validatedCharacter, useStar) => {
   if (typeof msgObj === 'string') {
-    return applyPadding(msgObj, constrainedMultiplier, validatedCharacter);
+    return applyPadding(msgObj, constrainedMultiplier, validatedCharacter, useStar);
   }
   if (Array.isArray(msgObj)) {
-    return msgObj.map(item => traverseMessagesObj(item, constrainedMultiplier, validatedCharacter));
+    return msgObj.map(item => traverseMessagesObj(item, constrainedMultiplier, validatedCharacter, useStar));
   }
   if (isObject(msgObj)) {
     return Object.keys(msgObj).reduce(
       (acc, key) => ({
         ...acc,
-        [key]: traverseMessagesObj(msgObj[key], constrainedMultiplier, validatedCharacter)
+        [key]: traverseMessagesObj(msgObj[key], constrainedMultiplier, validatedCharacter, useStar)
       }),
       {}
     );
@@ -81,23 +83,25 @@ export const validateMultiplier = (multiplier = 0.4) => {
 
 /**
  * Wraps the string values of a messages object in padding characters; arrows, by default.
- * @param {Object} msgObj - The data that should be wrapped with arrows. Can contain other objects and even arrays of strings.
+ * @param {Object} msgObj - The data that should be wrapped with characters. Can contain other objects and even arrays of strings.
  * @param {Object} [config] - Optional configuration object.
- * @param {number} [config.multiplier=0.4] - Min: 0.0; Max 3.0; Number of arrows to be added, as a multiplier of the character count of the source string. (e.g. 'characters' with growthRate of 0.4 would get two arrows on each side, for a total of 4 added arrow characters)
+ * @param {number} [config.multiplier=0.4] - Min: 0.0; Max 3.0; Number of characters to be added, as a multiplier of the character count of the source string. (e.g. 'characters' with growthRate of 0.4 would get two arrows on each side, for a total of 4 added arrow characters)
  * @param {string} [config.character] - Max length: 1; Custom character to use as padding. Defaults to traditional arrows characters.
+ * @param {boolean} [useStar] - Optional boolean; If true, a double byte star character will be used instead of arrows.
  */
-const padMessages = (msgObj = {}, config = {}) => {
+const padMessages = (msgObj = {}, config = {}, useStar = false) => {
   if (!isObject(msgObj)) {
+    const testingLocaleName = useStar ? 'stars' : 'arrows';
     // eslint-disable-next-line no-console
     console.warn(
-      'Could not generate arrows language. Source messages were either not provided, or were not in the form of an object.'
+      `Could not generate ${testingLocaleName} language. Source messages were either not provided, or were not in the form of an object.`
     );
     return msgObj;
   }
 
   const { multiplier, character } = config;
 
-  return traverseMessagesObj(msgObj, validateMultiplier(multiplier), validateCharacter(character));
+  return traverseMessagesObj(msgObj, validateMultiplier(multiplier), validateCharacter(character), useStar);
 };
 
 export default padMessages;

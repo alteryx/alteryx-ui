@@ -425,6 +425,20 @@ describe('AyxAppWrapper', () => {
     wrapper.unmount();
   });
 
+  it('returns the arrows translations when given an "arrows" locale prop', () => {
+    const wrapper = shallow(
+      <AyxAppWrapper locale="arrows">
+        <div>Placeholder</div>
+      </AyxAppWrapper>
+    );
+
+    const expected = '⇚⇚Check All⇛⇛';
+    const actual = wrapper.props().theme.props.MuiListBox.checkAllText;
+
+    expect(actual).toEqual(expected);
+    wrapper.unmount();
+  });
+
   it('returns the arrows translations and unique character when given a "xx" locale prop and a "padMessagesProps" prop', () => {
     const wrapper = shallow(
       <AyxAppWrapper locale="xx" padMessagesProps={{ character: 'λ' }}>
@@ -433,6 +447,20 @@ describe('AyxAppWrapper', () => {
     );
 
     const expected = 'λλCheck Allλλ';
+    const actual = wrapper.props().theme.props.MuiListBox.checkAllText;
+
+    expect(actual).toEqual(expected);
+    wrapper.unmount();
+  });
+
+  it('returns the stars translations when given a "stars" locale prop', () => {
+    const wrapper = shallow(
+      <AyxAppWrapper locale="stars">
+        <div>Placeholder</div>
+      </AyxAppWrapper>
+    );
+
+    const expected = '＊＊Check All＊＊';
     const actual = wrapper.props().theme.props.MuiListBox.checkAllText;
 
     expect(actual).toEqual(expected);

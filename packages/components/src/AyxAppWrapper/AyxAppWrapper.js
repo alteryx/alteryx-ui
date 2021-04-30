@@ -56,7 +56,10 @@ const AyxAppWrapper = ({
   const isDesignerCef = useMemo(() => (alteryxLanguageCode ? 'designer' : 'default'), [alteryxLanguageCode]);
 
   const localMessages = useMemo(
-    () => messages[browserLocale === 'xx' || browserLocale === 'arrows' ? 'en' : browserLocale],
+    () =>
+      messages[
+        browserLocale === 'xx' || browserLocale === 'arrows' || browserLocale === 'stars' ? 'en' : browserLocale
+      ],
     [messages, browserLocale]
   );
 
@@ -80,8 +83,8 @@ const AyxAppWrapper = ({
   };
 
   const defaultTranslations =
-    browserLocale === 'xx' || browserLocale === 'arrows'
-      ? padMessages(locales.en, padMessagesProps)
+    browserLocale === 'xx' || browserLocale === 'arrows' || browserLocale === 'stars'
+      ? padMessages(locales.en, padMessagesProps, browserLocale === 'stars')
       : locales[browserLocale] || en;
   // includes theme and overrides)
   const finalTheme = useMemo(() => getCoreTheme(productTheme, fontFamily, paletteType, defaultTranslations), [

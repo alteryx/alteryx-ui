@@ -24,6 +24,16 @@ describe('padMessages util', () => {
     expect(value1).toBe('⇚⇚string1⇛⇛');
   });
 
+  it('wraps msgObj values with correct default multiplier and padding character when useStars is true', () => {
+    const msgObj = {
+      value1: 'string1'
+    };
+
+    const { value1 } = padMessages(msgObj, undefined, true);
+
+    expect(value1).toBe('＊＊string1＊＊');
+  });
+
   it('adjusts padding based on multiplier config option', () => {
     const msgObj = {
       value1: 'string1'

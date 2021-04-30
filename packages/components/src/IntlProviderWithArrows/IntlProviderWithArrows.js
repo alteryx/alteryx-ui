@@ -18,8 +18,10 @@ import { padMessages } from './utils';
  */
 const IntlProviderWithArrows = ({ locale, messages, children, padMessagesProps, ...intlProps }) => {
   const provideArrows = locale === 'xx' || locale === 'arrows';
-  const newLocale = provideArrows ? 'en' : locale;
-  const newMessages = provideArrows ? padMessages(messages, padMessagesProps) : messages;
+  const provideStars = locale === 'stars';
+  const testingLocale = provideArrows || provideStars;
+  const newLocale = testingLocale ? 'en' : locale;
+  const newMessages = testingLocale ? padMessages(messages, padMessagesProps, provideStars) : messages;
 
   return (
     <IntlProvider locale={newLocale} messages={newMessages} {...intlProps}>
