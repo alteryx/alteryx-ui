@@ -27,6 +27,7 @@
     "build": "npm run copy-core && npm run clean-override-imports && npm run copy-virtualized-list && npm run copy-autocomplete && npm run build:es2015 && npm run build:es2015modules && npm run build:copy-files"
   },
   "dependencies": {
+    "@alteryx/icons": "^1.0.0",
     "@material-ui/core": "^4.11.3-deprecations.1",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/styles": "^4.0.0",
