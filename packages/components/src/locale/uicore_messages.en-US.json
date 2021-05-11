@@ -23,6 +23,9 @@
     "MuiBreadcrumbs": {
       "expandText": "Show path"
     },
+    "MuiColorPicker": {
+      "ariaLabelText": "hex color"
+    },
     "MuiListBox": {
       "footerText": "{checked} of {total} Checked",
       "checkAllText": "Check All",

@@ -13,7 +13,13 @@ const MTabs = ({ palette, spacing }) => ({
     }
   },
   scrollButtons: {
-    color: palette.action.passive
+    color: palette.action.passive,
+    '&.Mui-disabled': {
+      opacity: 0.4
+    },
+    '& svg': {
+      fontSize: 16
+    }
   }
 });
 

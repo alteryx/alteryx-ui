@@ -1,4 +1,7 @@
 {
+  "__L10N_META__": {
+    "__L10N_META_RETRIEVED_AT__": "projectId||9||retrievedTime||2021-05-11T10:10:29.168Z"
+  },
   "props": {
     "MuiAlert": {
       "closeText": "Cerrar"
@@ -22,6 +25,9 @@
     },
     "MuiBreadcrumbs": {
       "expandText": "Mostrar ruta"
+    },
+    "MuiColorPicker": {
+      "ariaLabelText": "color hexadecimal"
     },
     "MuiListBox": {
       "footerText": "{checked} de {total} seleccionados",

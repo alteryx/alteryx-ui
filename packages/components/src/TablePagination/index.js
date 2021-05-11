@@ -22,9 +22,15 @@ const TablePagination = React.forwardRef((props, ref) => {
 
   return (
     <MaterialTablePagination
-      labelDisplayedRows={
-        ({ count, from, to }) =>
-          intl.formatMessage(messages.tablePagination, { count: count.toString().replaceAll('-', '_'), from, to }) // see note above about weirdness
+      labelDisplayedRows={({ count, from, to }) =>
+        intl.formatMessage(messages.tablePagination, {
+          // we need to replace all instances of - in a string in a way that works in
+          // all supported browsers, so using regex pattern with global flag since
+          // String.prototype.replaceAll() is not yet broadly supported.
+          count: count.toString().replace(new RegExp('-', 'g'), '_'),
+          from,
+          to
+        })
       }
       ref={ref}
       {...props}

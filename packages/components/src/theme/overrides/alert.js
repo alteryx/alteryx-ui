@@ -40,7 +40,7 @@ const MuiAlert = ({ palette, spacing, typography }) => {
     },
     standardInfo: {
       color: palette.type === 'dark' ? palette.info.light : palette.info.dark,
-      backgroundColor: fade(palette.info.main, standardOpacity),
+      backgroundColor: palette.type === 'dark' ? '#1a2a43' : '#e3f0fc',
       '& .MuiDivider-vertical': {
         backgroundColor: fade(palette.info.main, standardOpacity)
       },
@@ -50,7 +50,7 @@ const MuiAlert = ({ palette, spacing, typography }) => {
     },
     standardError: {
       color: palette.type === 'dark' ? palette.error.light : palette.error.dark,
-      backgroundColor: fade(palette.error.main, standardOpacity),
+      backgroundColor: palette.type === 'dark' ? '#3e222a' : '#fbebed',
       '& .MuiDivider-vertical': {
         backgroundColor: fade(palette.error.main, standardOpacity)
       },
@@ -60,7 +60,7 @@ const MuiAlert = ({ palette, spacing, typography }) => {
     },
     standardWarning: {
       color: palette.type === 'dark' ? palette.warning.light : palette.warning.dark,
-      backgroundColor: fade(palette.warning.main, standardOpacity),
+      backgroundColor: palette.type === 'dark' ? '#3e2724' : '#fcede9',
       '& .MuiDivider-vertical': {
         backgroundColor: fade(palette.warning.main, standardOpacity)
       },
@@ -70,7 +70,7 @@ const MuiAlert = ({ palette, spacing, typography }) => {
     },
     standardSuccess: {
       color: palette.type === 'dark' ? palette.success.light : palette.success.dark,
-      backgroundColor: fade(palette.success.main, standardOpacity),
+      backgroundColor: palette.type === 'dark' ? '#193230' : '#e0f4ef',
       '& .MuiDivider-vertical': {
         backgroundColor: fade(palette.success.main, standardOpacity)
       },
