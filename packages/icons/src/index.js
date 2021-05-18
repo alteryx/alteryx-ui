@@ -154,6 +154,7 @@ export { default as GitPullRequest } from './icons/git-pull-request';
 export { default as GitHub } from './icons/github';
 export { default as Gitlab } from './icons/gitlab';
 export { default as Globe } from './icons/globe';
+export { default as GridDots } from './icons/grid-dots';
 export { default as GridView } from './icons/grid-view';
 export { default as HardDrive } from './icons/hard-drive';
 export { default as Hash } from './icons/hash';

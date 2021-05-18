@@ -96,7 +96,6 @@ const MTablePagination = theme => ({
     lineHeight: 1.54
   },
   selectIcon: {
-    top: 9,
     color: theme.palette.blueGrey[500]
   },
   actions: {
