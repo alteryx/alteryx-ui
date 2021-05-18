@@ -161,6 +161,7 @@ export const GitPullRequest: Icon;
 export const GitHub: Icon;
 export const Gitlab: Icon;
 export const Globe: Icon;
+export const GridDots: Icon;
 export const GridView: Icon;
 export const HardDrive: Icon;
 export const Hash: Icon;
