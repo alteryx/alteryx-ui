@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VariableSizeListProps } from 'react-window';
 
-interface IVirtualizedListProps extends Omit<VariableSizeListProps, 'children'> {
+export interface IVirtualizedListProps extends Omit<VariableSizeListProps, 'children'> {
   children?: React.ReactNode;
   renderRow?: (props: any) => React.ReactNode;
 }
