@@ -34,11 +34,14 @@
     "@material-ui/system": "^4.0.0",
     "@material-ui/types": "^5.0.0",
     "@material-ui/utils": "^4.0.0",
+    "bignumber.js": "^9.0.1",
     "classnames": "^2.2.6",
     "deepmerge": "^4.0.0",
+    "keycode-js": "^3.1.0",
     "react-select": "3.0.4",
     "react-window": "^1.8.5",
-    "resize-observer-polyfill": "^1.5.1"
+    "resize-observer-polyfill": "^1.5.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
