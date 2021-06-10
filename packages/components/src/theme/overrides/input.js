@@ -150,15 +150,15 @@ const MInputAdornment = ({ palette, spacing, typography }) => ({
     fontSize: typography.pxToRem(13)
   },
   positionStart: {
-    marginLeft: spacing(2),
-    marginRight: spacing(2),
+    marginLeft: spacing(1),
+    marginRight: spacing(1),
     '& svg': {
       color: palette.action.passive
     }
   },
   positionEnd: {
-    marginLeft: spacing(2),
-    marginRight: spacing(2),
+    marginLeft: spacing(1),
+    marginRight: spacing(1),
     '& svg': {
       color: palette.action.passive
     }

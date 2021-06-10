@@ -6,31 +6,34 @@ const MIconButton = ({ palette, spacing }) => ({
     // Animate changing variants
     borderRadius: spacing(1), // match Button border radius
     padding: spacing(1),
-    '&:focus, &:hover': {
-      backgroundColor: 'transparent'
+    '&:hover': {
+      backgroundColor: 'transparent',
+      color: palette.primary.light
     },
     '&:active': {
       color: palette.primary.dark
     }
   },
   colorPrimary: {
-    '&:focus, &:hover': {
-      backgroundColor: 'transparent'
+    '&:hover': {
+      backgroundColor: 'transparent',
+      color: palette.primary.light
     },
     '&:active': {
       color: palette.primary.dark
     }
   },
   colorSecondary: {
-    '&:focus, &:hover': {
-      backgroundColor: 'transparent'
+    '&:hover': {
+      backgroundColor: 'transparent',
+      color: palette.secondary.light
     },
     '&:active': {
       color: palette.secondary.dark
     }
   },
   colorInherit: {
-    '&:focus, &:hover': {
+    '&:hover': {
       opacity: 1 - hoverOpacity
     }
   },

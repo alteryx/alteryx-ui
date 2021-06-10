@@ -46,8 +46,7 @@ const MButton = ({ palette, typography, zDepth, spacing }) => {
       },
 
       '&$focusVisible': {
-        boxShadow: focusShadow,
-        color: palette.primary.light
+        boxShadow: focusShadow
       },
 
       '&:hover': {
