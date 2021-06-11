@@ -36,6 +36,7 @@ import svgIcon from './svg-icon';
 import switchSelect from './switch';
 import table from './table';
 import tabs from './tabs';
+import timeline from './timeline';
 import togglebutton from './togglebutton';
 import tooltip from './tooltip';
 import toolbar from './toolbar';
@@ -80,6 +81,7 @@ export default theme => ({
   ...switchSelect(theme),
   ...table(theme),
   ...tabs(theme),
+  ...timeline(theme),
   ...togglebutton(theme),
   ...toolbar(theme),
   ...tooltip(theme),
