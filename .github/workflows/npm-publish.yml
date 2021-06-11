@@ -8,8 +8,29 @@ on:
     types: [created]
 
 jobs:
-  publish-npm:
+  build:
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: cd packages/components
+    - run: npm install
+    - run: npm run build
+    
+  publish-npm:
+  
+    runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
