@@ -41,5 +41,9 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm publish build --access public
+      - run: cd ../icons
+      - run: npm install
+      - run: npm run build
+      - run: npm publish build --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
