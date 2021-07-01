@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Yeah. This looks ridiculous to me too, but it's what MUI is doing everywhere...
+// Mui Example:
 // https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Avatar/Avatar.js#L38
 // eslint-disable-next-line prefer-arrow-callback
 const Airplay = React.forwardRef(function Airplay(props, ref) {
@@ -45,7 +45,7 @@ Airplay.defaultProps = {
   size: '16',
 };
 
-// We should try to find a way to not hard-code these properties, if possible.
+// Hard coding component names and render names
 Airplay.name = Airplay.render.name || 'Airplay';
 
 export default Airplay;

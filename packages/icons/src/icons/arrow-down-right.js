@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Yeah. This looks ridiculous to me too, but it's what MUI is doing everywhere...
+// Mui Example:
 // https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Avatar/Avatar.js#L38
 // eslint-disable-next-line prefer-arrow-callback
 const ArrowDownRight = React.forwardRef(function ArrowDownRight(props, ref) {
@@ -20,6 +20,10 @@ const ArrowDownRight = React.forwardRef(function ArrowDownRight(props, ref) {
     : variantSizes[size] !== undefined
     ? variantSizes[size]
     : variantSizes['medium'];
+
+  console.warn(
+    'The icon ArrowDownRight is deprecated and will be removed in a future major release.'
+  );
 
   return (
     <svg
@@ -45,7 +49,7 @@ ArrowDownRight.defaultProps = {
   size: '16',
 };
 
-// We should try to find a way to not hard-code these properties, if possible.
+// Hard coding component names and render names
 ArrowDownRight.name = ArrowDownRight.render.name || 'ArrowDownRight';
 
 export default ArrowDownRight;
