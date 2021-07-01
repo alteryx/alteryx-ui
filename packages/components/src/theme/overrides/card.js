@@ -1,11 +1,10 @@
 const HEADER_HEIGHT = 54;
 
-const MCard = ({ palette, spacing, zDepth }) => ({
+const MCard = ({ palette, spacing }) => ({
   root: {
     borderRadius: 6,
     border: '1px solid',
     borderColor: palette.type === 'dark' ? palette.background.paper : palette.blueGrey[200],
-    ...zDepth.for('card'),
     // Alter card content if in a card preceded by a header and divider
     '& .MuiCardHeader-root + .MuiDivider-root + .MuiCardContent-root': {
       paddingTop: spacing(4)
