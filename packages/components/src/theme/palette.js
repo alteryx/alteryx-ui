@@ -158,6 +158,15 @@ const getUICorePalette = (_, paletteType = 'light') => {
 
     // Custom palette keys
     brand: {
+      deepSea: 'rgb(0, 38, 62)',
+      highlandMint: 'rgb(0, 44, 51)',
+      hotTamale: 'rgb(255, 71, 19)',
+      jadeGlade: 'rgb(0, 192, 139)',
+      mahogany: 'rgb(76, 23, 10)',
+      mangoTango: 'rgb(255, 158, 24)',
+      skyBlue: 'rgb(10, 168, 255)',
+      umber: 'rgb(38, 22, 26)',
+      // All colors under this are deprecated
       blueRazz: '#79e9d7',
       corporateBlue: '#0082ca',
       cottonCandy: '#ffc6c3',

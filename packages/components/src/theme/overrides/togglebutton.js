@@ -7,6 +7,9 @@ const MToggleButton = ({ palette, spacing }) => ({
     '&$disabled': {
       color: palette.action.disabled
     },
+    '&:focus': {
+      boxShadow: palette.getFocusedShadowStyle()
+    },
     '&$selected': {
       backgroundColor: palette.primary.main,
       color: palette.primary.contrastText,

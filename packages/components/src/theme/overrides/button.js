@@ -21,7 +21,7 @@ const MButton = ({ palette, typography, zDepth, spacing }) => {
     },
     label: {
       '& > svg': {
-        marginTop: spacing(1)
+        marginTop: spacing(0.5)
       }
     },
     colorInherit: {

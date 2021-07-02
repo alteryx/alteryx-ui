@@ -45,6 +45,9 @@ const props = {
   MuiButtonGroup: {
     disableRipple: true
   },
+  MuiCard: {
+    elevation: 1
+  },
   MuiCardHeader: {
     titleTypographyProps: {
       variant: 'h2'
