@@ -39,8 +39,7 @@ const MTab = theme => ({
     },
     '&$selected': {
       // "Active" state
-      color: theme.palette.primary.main,
-      lineHeight: 'normal'
+      color: theme.palette.primary.main
     },
     '&:active': {
       // "Pressed" state
@@ -56,7 +55,6 @@ const MTab = theme => ({
   textColorInherit: {
     color: theme.palette.text.secondary,
     fontWeight: 'bold',
-    lineHeight: 'normal',
     opacity: 1
   }
 });
