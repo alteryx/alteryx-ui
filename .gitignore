@@ -4,3 +4,4 @@ packages/icons/node_modules/
 packages/icons/build/
 packages/components/.npmrc
 packages/icons/.npmrc
+node_modules
