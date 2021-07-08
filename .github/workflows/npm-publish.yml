@@ -23,9 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd packages/components
-    - run: npm install
-    - run: npm run build
+    - run: cd packages/components && npm install && npm run build
     
   publish-npm:
   
@@ -37,13 +35,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: cd packages/components
-      - run: npm install
-      - run: npm run build
-      - run: npm publish build --access public
-      - run: cd ../icons
-      - run: npm install
-      - run: npm run build
-      - run: npm publish build --access public
+      - run: cd packages/icons && npm install && npm run build && npm publish build --access public
+      - run: cd packages/components && npm install && npm run build && npm publish build --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}

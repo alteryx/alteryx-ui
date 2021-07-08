@@ -1,6 +1,43 @@
 const ENV = process.env.BABEL_ENV;
 let defaultPresets;
 
+const coreStyles = [
+  'create',
+  'createGenerateClassName',
+  'createStyles',
+  'duration',
+  'easing',
+  'getAutoHeightDuration',
+  'jssPreset',
+  'makeStyles',
+  'ServerStyleSheets',
+  'styled',
+  'StylesProvider',
+  'useTheme',
+  'withStyles',
+  'withThemeCreator'
+]
+
+const colorManipulator = [
+  'fade',
+  'lighten',
+  'darken'
+]
+
+const transitions = [
+  'create',
+  'duration',
+  'easing',
+  'getAutoHeightDuration'
+]
+
+const styles = [
+  'withTheme',
+  'getThemeProps',
+  'mergeClasses',
+  'ThemeProvider',
+]
+
 // We release a ES version of Material-UI.
 // It's something that matches the latest official supported features of JavaScript.
 // Nothing more (stage-1, etc), nothing less (require, etc).
@@ -63,6 +100,23 @@ module.exports = {
             return `@ayx/icons/svg/${folderName}`;
           }
           return `@ayx/icons/icons/${folderName}`;
+        }
+      },
+      "../": {
+        "transform": importName => {
+          let path;
+          if (styles.includes(importName)) {
+            path = `@material-ui/styles/${importName}`
+          } else if (coreStyles.includes(importName)){
+            path = `@material-ui/core/styles/${importName}`
+          } else if (transitions.includes(importName)){
+            path = `@material-ui/core/styles/transitions/${importName}`
+          } else if (colorManipulator.includes(importName)){
+            path = `@material-ui/core/styles`
+          } else {
+            path = importName === 'dataUICMaker' ? `../utils` : `../${importName}`;
+          }
+          return path;
         }
       },
       '@material-ui/core': {
