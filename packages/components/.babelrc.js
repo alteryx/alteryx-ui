@@ -1,7 +1,7 @@
 const ENV = process.env.BABEL_ENV;
 let defaultPresets;
 
-const coreStyles= [
+const coreStyles = [
   'create',
   'createGenerateClassName',
   'createStyles',
