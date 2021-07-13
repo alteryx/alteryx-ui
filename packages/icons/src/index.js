@@ -287,6 +287,7 @@ export { default as Smartphone } from './icons/smartphone';
 export { default as Sorting } from './icons/sorting';
 export { default as Speaker } from './icons/speaker';
 export { default as Square } from './icons/square';
+export { default as StarFilled } from './icons/star-filled';
 export { default as Star } from './icons/star';
 export { default as Status } from './icons/status';
 export { default as StopCircle } from './icons/stop-circle';
