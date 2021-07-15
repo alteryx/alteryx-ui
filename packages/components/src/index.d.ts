@@ -63,6 +63,7 @@ interface Theme extends MTheme {
 // export { colors };
 export { Theme };
 export {
+  ClassNameMap,
   createGenerateClassName,
   createMuiTheme,
   createStyles,
