@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { KEY_DELETE } from 'keycode-js';
 import { isEmpty, last } from 'lodash';
-import { filterProps } from '../utils';
+import { filterProps } from '../../utils';
 
 // TODO: uncomment and implement after the util updates in core are are released
 // import { filterProps } from '@ayx/ui-core/utils';
