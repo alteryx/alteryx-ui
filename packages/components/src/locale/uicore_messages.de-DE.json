@@ -1,6 +1,6 @@
 {
   "__L10N_META__": {
-    "__L10N_META_RETRIEVED_AT__": "projectId||9||retrievedTime||2021-05-11T10:10:29.168Z"
+    "__L10N_META_RETRIEVED_AT__": "projectId||9||retrievedTime||2021-07-08T10:10:32.024Z"
   },
   "props": {
     "MuiAlert": {
@@ -41,7 +41,7 @@
     },
     "MuiPagination": {
       "aria-label": "Paginierungsnavigation",
-      "getItemAriaLabel": "{type, select, page {{selected, select, true {} false {Zu Seite gehen {page}}}} first {Zur ersten Seite gehen } last {Zur letzten Seite gehen } next {Zur nächsten Seite gehen } previous {Zur vorherigen Seite gehen} other {}}"
+      "getItemAriaLabel": "{type, select, page {{selected, select, true {} false {Gehe zu Seite {page}} other {} }} first {Gehe zur ersten Seite} last {Gehe zur letzten Seite} next {Gehe zur nächsten Seite} previous {Gehe zur vorherigen Seite} other {}}"
     },
     "MuiRating": {
       "emptyLabelText": "Leer",

@@ -294,6 +294,7 @@ export const Smartphone: Icon;
 export const Sorting: Icon;
 export const Speaker: Icon;
 export const Square: Icon;
+export const StarFilled: Icon;
 export const Star: Icon;
 export const Status: Icon;
 export const StopCircle: Icon;

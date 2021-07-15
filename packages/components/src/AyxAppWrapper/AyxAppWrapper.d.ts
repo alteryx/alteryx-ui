@@ -5,6 +5,7 @@ import { IPadMessagesProps } from '../IntlProviderWithArrows/IntlProviderWithArr
 type Theme = object | ((obj: object) => object);
 export interface IAyxAppWrapperProps {
   children: any;
+  language?: string;
   locale?: string;
   messages?: {} | [];
   theme?: Theme;
