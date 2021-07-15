@@ -81,7 +81,7 @@ glob(`${rootDir}/svg/**/**.svg`, (err, icons) => {
       import React from 'react';
       import PropTypes from 'prop-types';
 
-      // Yeah. This looks ridiculous to me too, but it's what MUI is doing everywhere...
+      // Mui Example:
       // https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Avatar/Avatar.js#L38
       // eslint-disable-next-line prefer-arrow-callback
       const ${ComponentName} = React.forwardRef(function ${ComponentName}(props, ref) {
@@ -133,7 +133,7 @@ glob(`${rootDir}/svg/**/**.svg`, (err, icons) => {
         size: '16',
       }
 
-      // We should try to find a way to not hard-code these properties, if possible.
+      // Hard coding component names and render names
       ${ComponentName}.name = ${ComponentName}.render.name || '${ComponentName}';
 
       export default ${ComponentName};
