@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { KEY_DELETE } from 'keycode-js';
 import { isEmpty, last } from 'lodash';
-import { filterProps } from '../../utils';
+import { filterProps } from '../utils';
 
 // TODO: uncomment and implement after the util updates in core are are released
 // import { filterProps } from '@ayx/ui-core/utils';
@@ -181,7 +181,6 @@ function cursorHoc(InputComponent) {
      * Detect the keyDown event and suppress changing position of caret
      * @param event
      */
-    // eslint-disable-next-line complexity
     handleKeyDown = event => {
       const { onKeyDown, value } = this.props;
       const { key, keyCode, shiftKey, metaKey, ctrlKey } = event;
@@ -191,7 +190,7 @@ function cursorHoc(InputComponent) {
       const isMetaPressed = metaKey || ctrlKey || shiftKey;
       const isCtrlPressed = ctrlKey || metaKey;
 
-      const isMeta = META_KEYS.includes(keyCode);
+      const isMeta = META_KEYS.includes(keyCode) || isMetaPressed;
       const isClipboard = isMetaPressed && CLIPBOARD_KEYS.includes(keyCode);
       const isUndo = isCtrlPressed && UNDO_KEYS.includes(keyCode);
 
@@ -216,7 +215,6 @@ function cursorHoc(InputComponent) {
 
       if (!isMeta && !isClipboard) {
         this.predictValue(value, key);
-
         // Prevent any browser behaviour if predicted value not valid
         if (!this.validatePredictedValue()) {
           event.preventDefault();

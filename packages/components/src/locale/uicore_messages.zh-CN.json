@@ -1,6 +1,6 @@
 {
   "__L10N_META__": {
-    "__L10N_META_RETRIEVED_AT__": "projectId||9||retrievedTime||2021-05-11T10:10:29.168Z"
+    "__L10N_META_RETRIEVED_AT__": "projectId||9||retrievedTime||2021-07-08T10:10:32.024Z"
   },
   "props": {
     "MuiAlert": {
@@ -41,7 +41,7 @@
     },
     "MuiPagination": {
       "aria-label": "分页导航",
-      "getItemAriaLabel": "{type, select, page {{selected, select, true {} false {Go to page}}{page}} first {Go to first page} last {Go to last page} next {Go to next page} previous {Go to previous page} other {}}"
+      "getItemAriaLabel": "{type, select, page {{selected, select, true {} false {转至页面{page}} other {} }} first {转至第一页} last {转至最后一页} next {转至下一页} previous {转至上一页} other {}}"
     },
     "MuiRating": {
       "emptyLabelText": "空白",

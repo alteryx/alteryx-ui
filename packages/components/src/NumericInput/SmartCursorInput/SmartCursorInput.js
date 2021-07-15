@@ -1,4 +1,4 @@
-import { Input } from '../../';
+import { Input } from '../';
 
 import cursorHoc from './cursorHoc';
 
