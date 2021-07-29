@@ -5,7 +5,7 @@ import { isEmpty, last } from 'lodash';
 import { filterProps } from '../../utils';
 
 // TODO: uncomment and implement after the util updates in core are are released
-// import { filterProps } from '@ayx/ui-core/utils';
+// import { filterProps } from '@alteryx/ui/utils';
 
 import { CLIPBOARD_KEYS, META_KEYS, UNDO_KEYS } from './constants';
 
