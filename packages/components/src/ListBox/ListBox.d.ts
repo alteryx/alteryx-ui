@@ -6,7 +6,7 @@ export interface IItem {
   divider?: boolean;
   name: string;
   selected?: boolean;
-  tooltip?: string;
+  tooltip?: string | React.ReactNode;
   value: string;
 }
 
