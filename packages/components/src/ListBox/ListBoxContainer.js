@@ -21,9 +21,10 @@ export const ListContainerPropTypes = {
     })
   ).isRequired,
   ListItemTextComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.element, PropTypes.func]).isRequired,
-  noResultsText: PropTypes.string.isRequired,
   noResultsRowHeight: PropTypes.number.isRequired,
+  noResultsText: PropTypes.string.isRequired,
   onSelect: PropTypes.func.isRequired,
+  role: PropTypes.string,
   virtualizationProps: PropTypes.objectOf(PropTypes.any)
 };
 
@@ -32,6 +33,7 @@ const ListContainerDefaultProps = {
   'aria-label': undefined,
   'aria-labelledby': undefined,
   dividers: false,
+  role: undefined,
   virtualizationProps: {}
 };
 
@@ -181,6 +183,7 @@ function ListBoxContainer({
         aria-describedby={props['aria-describedby']}
         aria-label={props['aria-label']}
         aria-labelledby={props['aria-labelledby']}
+        role={props.role}
       >
         {filteredItems.length === 0 ? (
           // Only adding dense and disableGutters here for consistency's sake. They are not necessary or terribly useful here.
