@@ -14,6 +14,7 @@ import dateTimePicker from './dateTimePicker';
 import dialog from './dialog';
 import divider from './divider';
 import drawer from './drawer';
+import fab from './fab';
 import form from './form';
 import iconButton from './icon-button';
 import input from './input';
@@ -59,6 +60,7 @@ export default theme => ({
   ...dialog(theme),
   ...divider(theme),
   ...drawer(theme),
+  ...fab(theme),
   ...form(theme),
   ...iconButton(theme),
   ...input(theme),
