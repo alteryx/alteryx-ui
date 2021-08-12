@@ -14,6 +14,7 @@ export interface BlueGrey {
 }
 
 export interface Brand {
+  // TODO: remove from blueRazz to wasabi. Colors are deprecated
   blueRazz: string;
   corporateBlue: string;
   cottonCandy: string;
@@ -22,6 +23,14 @@ export interface Brand {
   greenApple: string;
   hotSauce: string;
   wasabi: string;
+  deepSea: string;
+  highlandMint: string;
+  hotTamale: string;
+  jadeGlade: string;
+  mahogany: string;
+  mangoTango: string;
+  skyBlue: string;
+  umber: string;
 }
 
 export interface Success {
@@ -63,6 +72,8 @@ export interface ToolCategory {
 interface IExtendedTypeAction extends MPalette.TypeAction {
   passive: string;
 }
+
+// any missing palette keys are inherited from the MUI Palette
 interface ExtendedPalette extends MPalette.Palette {
   blueGrey: BlueGrey;
   brand: Brand;
@@ -70,6 +81,9 @@ interface ExtendedPalette extends MPalette.Palette {
   warning: Warning;
   toolCategory: ToolCategory;
   action: IExtendedTypeAction;
+  getFocusedStyle: () => { borderColor: string; boxShadow: string };
+  getFocusedShadowStyle: (inset?: boolean) => string;
+  getFocusTransitions: () => string;
 }
 
 export type Palette = ExtendedPalette;
