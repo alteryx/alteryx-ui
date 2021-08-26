@@ -1,6 +1,6 @@
 {
   "name": "@alteryx/ui",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "main": "build/index.js",
   "module": "index.es.js",
   "sideEffects": [
@@ -24,7 +24,7 @@
     "build:copy-files-material": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../node_modules/@material-ui/core/**/*.d.ts ../build es AyxAppWrapper IntlProviderWithArrows",
     "release": "npm run copy-core && npm run build:copy-files && npm publish build --non-interactive",
     "clean": "rimraf build",
-    "build": "npm run copy-core && npm run clean-override-imports && npm run copy-virtualized-list && npm run copy-autocomplete && npm run build:es2015 && npm run build:es2015modules && npm run build:copy-files"
+    "build": "npm run copy-core && npm run clean-override-imports && npm run copy-virtualized-list && npm run copy-autocomplete && npm run build:copy-files && npm run build:es2015 && npm run build:es2015modules"
   },
   "dependencies": {
     "@alteryx/icons": "^1.0.0",
