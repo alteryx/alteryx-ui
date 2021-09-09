@@ -1,6 +1,6 @@
 {
   "name": "@alteryx/ui",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "main": "build/index.js",
   "module": "index.es.js",
   "sideEffects": [
