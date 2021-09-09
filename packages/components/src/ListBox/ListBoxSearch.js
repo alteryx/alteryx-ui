@@ -5,14 +5,16 @@ import { FormControl, FilledInput, InputAdornment, useTheme } from '../';
 
 const propTypes = {
   onChange: PropTypes.func,
-  searchPlaceholderText: PropTypes.string.isRequired
+  searchPlaceholderText: PropTypes.string.isRequired,
+  title: PropTypes.node
 };
 
 const defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
+  title: undefined
 };
 
-function ListBoxSearch({ classes, searchPlaceholderText, onChange }) {
+function ListBoxSearch({ classes, searchPlaceholderText, onChange, title }) {
   const { palette } = useTheme();
 
   return (
@@ -25,6 +27,7 @@ function ListBoxSearch({ classes, searchPlaceholderText, onChange }) {
         classes={{
           root: classes.searchInput
         }}
+        inputProps={{ 'aria-labelledby': title }}
         onChange={({ target: { value: keyword } }) => onChange(keyword)}
         placeholder={searchPlaceholderText}
         role="search"
