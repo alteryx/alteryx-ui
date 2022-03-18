@@ -2,7 +2,6 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { gte, invoke } from 'lodash';
 import { Grid, ListItemText, Typography, Box, withStyles } from '../';
-import { v4 as uuidv4 } from 'uuid';
 
 import ListBoxSearch from './ListBoxSearch';
 import ListBoxActionBar from './ListBoxActionBar';
@@ -196,12 +195,18 @@ class ListBox extends Component {
   render() {
     const { classes, 'data-uic': dataUIC, dividers, items, showSearch, noOptions, searchLimit } = this.props;
 
+    const createId = () => {
+      const newMS = new Date().getTime();
+      const ranNum = Math.random().toString(36);
+      return `${newMS}-${ranNum}`;
+    };
+
     const { keyword } = this.state;
     const filteredItems = this.searcher(keyword);
     const { length: quantity } = filteredItems;
     const actualHeight = this.getActualHeight(quantity);
-    const titleId = uuidv4();
-    const subheaderId = uuidv4();
+    const titleId = createId();
+    const subheaderId = createId();
     const actionableItems = filteredItems || items;
     const nonDisabledItemsCount = items.filter(({ disabled }) => !disabled).length;
     const checkedItemsCount = items.filter(({ selected }) => selected === true).length;
