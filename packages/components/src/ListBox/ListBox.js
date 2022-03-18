@@ -195,7 +195,7 @@ class ListBox extends Component {
   render() {
     const { classes, 'data-uic': dataUIC, dividers, items, showSearch, noOptions, searchLimit } = this.props;
 
-    const createUnsafeId = () => {
+    const createId = () => {
       const newMS = new Date().getTime();
       const ranNum = Math.random().toString(36);
       return `${newMS}-${ranNum}`;
@@ -205,8 +205,8 @@ class ListBox extends Component {
     const filteredItems = this.searcher(keyword);
     const { length: quantity } = filteredItems;
     const actualHeight = this.getActualHeight(quantity);
-    const titleId = createUnsafeId();
-    const subheaderId = createUnsafeId();
+    const titleId = createId();
+    const subheaderId = createId();
     const actionableItems = filteredItems || items;
     const nonDisabledItemsCount = items.filter(({ disabled }) => !disabled).length;
     const checkedItemsCount = items.filter(({ selected }) => selected === true).length;
