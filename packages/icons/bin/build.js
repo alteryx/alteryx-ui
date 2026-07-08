@@ -2,6 +2,11 @@ const fs = require('fs-extra');
 const glob = require('glob');
 const camelcase = require('camelcase');
 const uppercamelcase = require('uppercamelcase');
+
+if (typeof global.File === 'undefined') {
+  global.File = class File {};
+}
+
 const cheerio = require('cheerio');
 const prettier = require('prettier');
 
