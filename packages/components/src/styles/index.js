@@ -1,5 +1,5 @@
 export * from '@material-ui/core/styles/colorManipulator';
-export { default as createMuiTheme } from '@material-ui/core/styles/createMuiTheme';
+export { default as createMuiTheme } from '@material-ui/core/styles/createTheme';
 export { default as createStyles } from '@material-ui/core/styles/createStyles';
 export { default as makeStyles } from '@material-ui/core/styles/makeStyles';
 export { default as responsiveFontSizes } from '@material-ui/core/styles/responsiveFontSizes';
