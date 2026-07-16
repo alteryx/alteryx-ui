@@ -41,7 +41,7 @@ jobs:
         npm config list
     - name: Install dependencies
       working-directory: packages/components
-      run: npm install --include=dev --no-audit --no-fund
+      run: npm install --include=dev --no-audit --no-fund --verbose
       env:
         NODE_ENV: development
     - name: Build components
