@@ -52,12 +52,14 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'packages/components/package-lock.json'
       - name: Dry-run publish
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true'
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
         run: cd packages/components && npm ci && npm run build && npm publish build --access public --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+          NODE_OPTIONS: --max-old-space-size=4096
       - name: Publish package
-        if: github.event_name == 'release' || github.event.inputs.dry_run != 'true'
+        if: github.event_name == 'release' || !inputs.dry_run
         run: cd packages/components && npm ci && npm run build && npm publish build --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+          NODE_OPTIONS: --max-old-space-size=4096
