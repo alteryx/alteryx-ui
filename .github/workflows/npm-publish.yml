@@ -32,9 +32,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: 'packages/components/package-lock.json'
+    - name: Upgrade npm
+      run: npm install -g npm@10.9.2
     - name: Install dependencies
       working-directory: packages/components
-      run: npm ci --include=dev
+      run: npm ci --include=dev --no-audit --no-fund
+      env:
+        NODE_ENV: development
     - name: Build components
       working-directory: packages/components
       run: npm run build
@@ -55,9 +59,13 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: 'npm'
           cache-dependency-path: 'packages/components/package-lock.json'
+      - name: Upgrade npm
+        run: npm install -g npm@10.9.2
       - name: Install dependencies
         working-directory: packages/components
-        run: npm ci --include=dev
+        run: npm ci --include=dev --no-audit --no-fund
+        env:
+          NODE_ENV: development
       - name: Build components
         working-directory: packages/components
         run: npm run build
