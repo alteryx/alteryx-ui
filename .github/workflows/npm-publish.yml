@@ -36,7 +36,7 @@ jobs:
       run: npm install -g npm@10.9.2
     - name: Install dependencies
       working-directory: packages/components
-      run: npm ci --include=dev --no-audit --no-fund
+      run: npm install --include=dev --no-audit --no-fund
       env:
         NODE_ENV: development
     - name: Build components
@@ -63,7 +63,7 @@ jobs:
         run: npm install -g npm@10.9.2
       - name: Install dependencies
         working-directory: packages/components
-        run: npm ci --include=dev --no-audit --no-fund
+        run: npm install --include=dev --no-audit --no-fund
         env:
           NODE_ENV: development
       - name: Build components
