@@ -32,7 +32,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: 'packages/components/package-lock.json'
+    - run: npm cache clean --force
     - run: cd packages/components && npm ci && npm run build
+      env:
+        NODE_OPTIONS: --max-old-space-size=4096
+    
     
   publish-npm:
   
