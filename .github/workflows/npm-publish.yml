@@ -6,6 +6,13 @@ name: Node.js Package
 on:
   release:
     types: [created]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run npm publish in dry-run mode'
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   build:
@@ -18,23 +25,35 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd packages/components && npm install && npm run build
+        cache: 'npm'
+        cache-dependency-path: 'packages/components/package-lock.json'
+    - run: cd packages/components && npm ci && npm run build
     
   publish-npm:
   
+    needs: build
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 12
+          node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: cd packages/components && npm install && npm run build && npm publish build --access public
+          cache: 'npm'
+          cache-dependency-path: 'packages/components/package-lock.json'
+      - name: Dry-run publish
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true'
+        run: cd packages/components && npm ci && npm run build && npm publish build --access public --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      - name: Publish package
+        if: github.event_name == 'release' || github.event.inputs.dry_run != 'true'
+        run: cd packages/components && npm ci && npm run build && npm publish build --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
