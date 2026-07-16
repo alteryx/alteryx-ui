@@ -41,7 +41,7 @@ jobs:
         npm config list
     - name: Install dependencies
       working-directory: packages/components
-      run: npm install --include=dev --no-audit --no-fund --verbose
+      run: npm install --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000
       env:
         NODE_ENV: development
     - name: Build components
@@ -73,7 +73,7 @@ jobs:
           npm config list
       - name: Install dependencies
         working-directory: packages/components
-        run: npm install --include=dev --no-audit --no-fund
+        run: npm install --include=dev --no-audit --no-fund --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000
         env:
           NODE_ENV: development
       - name: Build components
