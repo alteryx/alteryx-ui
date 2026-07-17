@@ -30,8 +30,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: 'packages/components/package-lock.json'
+        cache: false
     - name: Pin npm
       run: npm install -g npm@11.16.0
     - name: Diagnostic info
@@ -41,7 +40,7 @@ jobs:
         npm config list
     - name: Install dependencies
       working-directory: packages/components
-      run: npm install --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=5
+      run: npm install --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
       env:
         NODE_ENV: development
     - name: Build components
@@ -62,8 +61,7 @@ jobs:
         with:
           node-version: 24.x
           registry-url: https://registry.npmjs.org/
-          cache: 'npm'
-          cache-dependency-path: 'packages/components/package-lock.json'
+          cache: false
       - name: Pin npm
         run: npm install -g npm@11.16.0
       - name: Diagnostic info
@@ -73,7 +71,7 @@ jobs:
           npm config list
       - name: Install dependencies
         working-directory: packages/components
-        run: npm install --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=5
+        run: npm install --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
         env:
           NODE_ENV: development
       - name: Build components
