@@ -6,13 +6,6 @@ name: Node.js Package
 on:
   release:
     types: [created]
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: 'Run npm publish in dry-run mode'
-        required: false
-        default: true
-        type: boolean
 
 jobs:
   build:
@@ -25,75 +18,23 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Pin npm
-      run: npm install -g npm@11.16.0
-    - name: Diagnostic info
-      run: |
-        node --version
-        npm --version
-        npm config list
-    - name: Registry ping
-      run: npm ping
-    - name: Registry head request
-      run: curl -I https://artifactory.alteryx.com/artifactory/api/npm/npm/
-    - name: Install dependencies
-      working-directory: packages/components
-      run: npm ci --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
-      env:
-        NODE_ENV: development
-    - name: Build components
-      working-directory: packages/components
-      run: npm run build
-      env:
-        NODE_OPTIONS: --max-old-space-size=4096
-    
+    - run: cd packages/components && npm install && npm run build
     
   publish-npm:
   
-    needs: build
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: 24.x
+          node-version: 24
           registry-url: https://registry.npmjs.org/
-      - name: Pin npm
-        run: npm install -g npm@11.16.0
-      - name: Diagnostic info
-        run: |
-          node --version
-          npm --version
-          npm config list
-      - name: Registry ping
-        run: npm ping
-      - name: Registry head request
-        run: curl -I https://artifactory.alteryx.com/artifactory/api/npm/npm/
-      - name: Install dependencies
-        working-directory: packages/components
-        run: npm ci --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
-        env:
-          NODE_ENV: development
-      - name: Build components
-        working-directory: packages/components
-        run: npm run build
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
-      - name: Dry-run publish
-        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
-        working-directory: packages/components
-        run: npm publish build --access public --dry-run
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-      - name: Publish package
-        if: github.event_name == 'release' || !inputs.dry_run
-        working-directory: packages/components
-        run: npm publish build --access public
+      - run: cd packages/components && npm install && npm run build && npm publish build --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
