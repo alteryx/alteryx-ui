@@ -41,6 +41,9 @@ jobs:
       run: npm ping --registry=https://registry.npmjs.org/
     - name: Debug Artifactory connectivity
       run: |
+        curl -v --max-time 10 https://artifactory.alteryx.com/artifactory/api/system/ping
+    - name: Debug Artifactory connectivity
+      run: |
         echo "=== DNS ==="
         nslookup your-artifactory-host.com
         echo "=== TCP ==="
