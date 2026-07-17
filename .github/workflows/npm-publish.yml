@@ -37,6 +37,10 @@ jobs:
         node --version
         npm --version
         npm config list
+    - name: Registry ping
+      run: npm ping
+    - name: Registry head request
+      run: curl -I https://artifactory.alteryx.com/artifactory/api/npm/npm/
     - name: Install dependencies
       working-directory: packages/components
       run: npm ci --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
@@ -67,6 +71,10 @@ jobs:
           node --version
           npm --version
           npm config list
+      - name: Registry ping
+        run: npm ping
+      - name: Registry head request
+        run: curl -I https://artifactory.alteryx.com/artifactory/api/npm/npm/
       - name: Install dependencies
         working-directory: packages/components
         run: npm ci --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
