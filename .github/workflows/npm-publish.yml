@@ -39,6 +39,12 @@ jobs:
         npm config list
     - name: Registry ping
       run: npm ping --registry=https://registry.npmjs.org/
+    - name: Debug Artifactory connectivity
+      run: |
+        echo "=== DNS ==="
+        nslookup your-artifactory-host.com
+        echo "=== TCP ==="
+        curl -v --max-time 10 https://your-artifactory-host.com/artifactory/api/system/ping
     - name: Install dependencies
       working-directory: packages/components
       run: npm ci --registry=https://registry.npmjs.org/ --include=dev --no-audit --no-fund --verbose --fetch-retries=5 --fetch-retry-mintimeout=20000 --fetch-retry-maxtimeout=120000 --fetch-timeout=300000 --maxsockets=1
