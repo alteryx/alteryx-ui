@@ -45,6 +45,8 @@ module.exports = {
   ],
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-transform-private-methods', { loose: true }],
+    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
     [
       '@babel/plugin-transform-object-rest-spread',
       {
@@ -54,22 +56,6 @@ module.exports = {
     ],
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-transform-runtime',
-    ["transform-imports", {
-      "@ayx/icons\/?(((\\w*)?\/?)*)": {
-        "transform": importName => {
-          const splitName = importName.split(/(?=[A-Z])/)
-          const folderName = splitName !== null ? splitName.join('-').toLocaleLowerCase() : importName.toLocaleLowerCase();
-          if (importName.includes('Svg')){
-            return `@ayx/icons/svg/${folderName}`;
-          }
-          return `@ayx/icons/icons/${folderName}`;
-        }
-      },
-      '@material-ui/core': {
-        'transform': '@material-ui/core/${member}',
-        'preventFullImport': true
-      },
-    }],
   ],
   env: {
     development: {
