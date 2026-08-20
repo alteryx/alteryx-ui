@@ -82,6 +82,8 @@ module.exports = {
   ],
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-transform-private-methods', { loose: true }],
+    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
     [
       '@babel/plugin-proposal-object-rest-spread',
       {
@@ -91,39 +93,6 @@ module.exports = {
     ],
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-transform-runtime',
-    ["transform-imports", {
-      "@ayx/icons\/?(((\\w*)?\/?)*)": {
-        "transform": importName => {
-          const splitName = importName.split(/(?=[A-Z])/)
-          const folderName = splitName !== null ? splitName.join('-').toLocaleLowerCase() : importName.toLocaleLowerCase();
-          if (importName.includes('Svg')){
-            return `@ayx/icons/svg/${folderName}`;
-          }
-          return `@ayx/icons/icons/${folderName}`;
-        }
-      },
-      "../": {
-        "transform": importName => {
-          let path;
-          if (styles.includes(importName)) {
-            path = `@material-ui/styles/${importName}`
-          } else if (coreStyles.includes(importName)){
-            path = `@material-ui/core/styles/${importName}`
-          } else if (transitions.includes(importName)){
-            path = `@material-ui/core/styles/transitions/${importName}`
-          } else if (colorManipulator.includes(importName)){
-            path = `@material-ui/core/styles`
-          } else {
-            path = importName === 'dataUICMaker' ? `../utils` : `../${importName}`;
-          }
-          return path;
-        }
-      },
-      '@material-ui/core': {
-        'transform': '@material-ui/core/${member}',
-        'preventFullImport': true
-      },
-    }],
   ],
   env: {
     development: {

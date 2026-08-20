@@ -1,10 +1,16 @@
 {
   "name": "@alteryx/ui",
-  "version": "1.4.6",
+  "version": "1.5.0",
   "main": "build/index.js",
   "module": "index.es.js",
   "sideEffects": [
     "*.css"
+  ],
+  "files": [
+    "**/*",
+    "!**/__tests__/**",
+    "!**/test-utils/**",
+    "!**/*.test.js"
   ],
   "publishConfig": {
     "access": "public"
@@ -14,11 +20,13 @@
   },
   "license": "MIT",
   "scripts": {
+    "test": "jest",
+    "test:react-matrix": "node scripts/test-react-matrix.js",
     "copy-core": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../core/src/**/* ../src Select",
     "copy-autocomplete": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../lab/src/Autocomplete/* ../src",
     "copy-virtualized-list": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../lab/src/VirtualizedList/* ../src",
     "clean-override-imports": "babel-node --config-file ./.babelrc.js ./scripts/clean-imports.js",
-    "build:es2015": "cross-env NODE_ENV=production babel --config-file ./.babelrc.js ./src --copy-files --out-dir ./build --no-copy-ignored",
+    "build:es2015": "cross-env NODE_ENV=production babel --config-file ./.babelrc.js ./src --copy-files --out-dir ./build --no-copy-ignored --ignore \"**/__tests__/**,**/*.test.js,**/test-utils/**\"",
     "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel --config-file ./.babelrc.js ./src/index.js --out-file ./build/index.es.js",
     "build:copy-files": "npm run build:copy-package-json && npm run build:copy-files-material && npm run build:copy-files-custom-components && npm run build:copy-strings",
     "build:copy-package-json": "babel-node --config-file ./.babelrc.js ./scripts/copy-package-json.js",
@@ -30,7 +38,8 @@
     "build": "npm run copy-core && npm run clean-override-imports && npm run copy-virtualized-list && npm run copy-autocomplete && npm run build:copy-files && npm run build:es2015 && npm run build:es2015modules"
   },
   "dependencies": {
-    "@alteryx/icons": "^1.0.0",
+    "@alteryx/icons": "^1.2.3",
+    "@alteryx/react-comms": "^1.1.0",
     "@material-ui/core": "4.12.4",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/styles": "^4.0.0",
@@ -41,7 +50,7 @@
     "classnames": "^2.2.6",
     "deepmerge": "^4.0.0",
     "keycode-js": "^3.1.0",
-    "react-select": "3.0.4",
+    "react-select": "^3.0.4",
     "react-window": "^1.8.5",
     "resize-observer-polyfill": "^1.5.1"
   },
@@ -61,7 +70,6 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-react-remove-properties": "^0.3.0",
     "babel-plugin-transform-dev-warning": "^0.1.1",
-    "babel-plugin-transform-imports": "^2.0.0",
     "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "clsx": "^1.1.0",
@@ -70,18 +78,19 @@
     "danger": "^10.1.0",
     "eslint": "^7.0.0",
     "fs-extra": "^10.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "lodash": "^4.17.20",
     "npm-run-all": "4.1.5",
     "prettier": "^2.0.5",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0",
     "react-intl": "^5.8.1",
     "react-is": "^16.13.1",
     "react-number-format": "^4.2.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-text-mask": "^5.4.3",
-    "recompose": "^0.30.0",
     "sinon": "^10.0.0",
     "typescript": "^4.9.5",
     "webpack": "^5.107.2",
@@ -89,9 +98,19 @@
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0",
     "react-intl": "^5.8.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/build/"
+    ]
   },
   "browserslist": {
     "development": [
