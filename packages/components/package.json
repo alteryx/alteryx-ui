@@ -6,6 +6,12 @@
   "sideEffects": [
     "*.css"
   ],
+  "files": [
+    "**/*",
+    "!**/__tests__/**",
+    "!**/test-utils/**",
+    "!**/*.test.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -20,7 +26,7 @@
     "copy-autocomplete": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../lab/src/Autocomplete/* ../src",
     "copy-virtualized-list": "babel-node --config-file ./.babelrc.js ./scripts/copy-files.js ../../lab/src/VirtualizedList/* ../src",
     "clean-override-imports": "babel-node --config-file ./.babelrc.js ./scripts/clean-imports.js",
-    "build:es2015": "cross-env NODE_ENV=production babel --config-file ./.babelrc.js ./src --copy-files --out-dir ./build --no-copy-ignored",
+    "build:es2015": "cross-env NODE_ENV=production babel --config-file ./.babelrc.js ./src --copy-files --out-dir ./build --no-copy-ignored --ignore \"**/__tests__/**,**/*.test.js,**/test-utils/**\"",
     "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=modules babel --config-file ./.babelrc.js ./src/index.js --out-file ./build/index.es.js",
     "build:copy-files": "npm run build:copy-package-json && npm run build:copy-files-material && npm run build:copy-files-custom-components && npm run build:copy-strings",
     "build:copy-package-json": "babel-node --config-file ./.babelrc.js ./scripts/copy-package-json.js",
